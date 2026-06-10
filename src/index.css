@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Variante personalizada de Tailwind v4 para habilitar modo oscuro con selector .dark */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Personalización del slider/rango para adaptarlo a la marca */
+input[type="range"]::-webkit-slider-thumb {
+  background: #63048C;
+}
+input[type="range"]::-moz-range-thumb {
+  background: #63048C;
+}
+
+.dark input[type="range"]::-webkit-slider-thumb {
+  background: #b855e8;
+}
+.dark input[type="range"]::-moz-range-thumb {
+  background: #b855e8;
+}
