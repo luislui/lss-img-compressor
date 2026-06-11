@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="lss-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#63048C" />
+      <stop offset="100%" stop-color="#b855e8" />
+    </linearGradient>
+  </defs>
+  <!-- Rounded rectangle background -->
+  <rect width="512" height="512" rx="128" fill="url(#lss-grad)" />
+  <!-- Inner content (Image landscape representation and vertical compression arrows) -->
+  <g fill="#ffffff">
+    <!-- Image landscape frame -->
+    <rect x="128" y="128" width="256" height="256" rx="32" fill="none" stroke="#ffffff" stroke-width="24" />
+    <!-- Mountain landscape -->
+    <path d="M152 320 L220 230 L270 290 L320 210 L360 320 Z" />
+    <!-- Sun -->
+    <circle cx="210" cy="190" r="24" />
+    <!-- Top compression arrow pointing inward -->
+    <path d="M256 60 L256 110 M256 110 L240 94 M256 110 L272 94" stroke="#ffffff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <!-- Bottom compression arrow pointing inward -->
+    <path d="M256 452 L256 402 M256 402 L240 418 M256 402 L272 418" stroke="#ffffff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+</svg>

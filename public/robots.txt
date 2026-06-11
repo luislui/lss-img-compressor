@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://app.loeramsoft.com/lss-img-compressor/sitemap.xml
