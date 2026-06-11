@@ -79,8 +79,10 @@ export function ImageList({ items, onRemoveItem, onDownloadItem }: ImageListProp
             <p className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">Tamaño Comprimido (JPG)</p>
             <p className="text-lg font-semibold text-neutral-800 dark:text-neutral-100 tabular-nums">
               {formatBytes(stats.compressedTotal)}
-              <span className="text-xs text-green-600 dark:text-green-400 ml-1.5 font-normal">
-                (Ahorro de {formatBytes(stats.difference)})
+              <span className={`text-xs ml-1.5 font-normal ${
+                stats.difference >= 0 ? 'text-green-600 dark:text-green-400' : 'text-amber-600 dark:text-amber-400'
+              }`}>
+                ({stats.difference >= 0 ? 'Ahorro' : 'Incremento'} de {formatBytes(Math.abs(stats.difference))})
               </span>
             </p>
           </div>
@@ -135,11 +137,12 @@ export function ImageList({ items, onRemoveItem, onDownloadItem }: ImageListProp
                 let resolutionDisplay = '---'
                 let savingDisplay = ''
 
+                let savedBytes = 0
                 if (isSuccess && item.result) {
-                  const savedBytes = item.result.originalSize - item.result.compressedSize
-                  const savedPercent = Math.max(0, Math.round((savedBytes / item.result.originalSize) * 100))
+                  savedBytes = item.result.originalSize - item.result.compressedSize
+                  const percentChange = Math.round((savedBytes / item.result.originalSize) * 100)
                   sizeDisplay = `${formatBytes(item.result.compressedSize)}`
-                  savingDisplay = `-${savedPercent}%`
+                  savingDisplay = percentChange >= 0 ? `-${percentChange}%` : `+${Math.abs(percentChange)}%`
                   
                   resolutionDisplay = `${item.result.originalWidth}x${item.result.originalHeight} → ${item.result.compressedWidth}x${item.result.compressedHeight}`
                 }
@@ -187,7 +190,11 @@ export function ImageList({ items, onRemoveItem, onDownloadItem }: ImageListProp
                             <span className="text-xs text-neutral-400 line-through">
                               {originalSizeFormatted}
                             </span>
-                            <span className="text-xs font-bold text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-950/30 px-1.5 py-0.5 rounded border border-green-200 dark:border-green-800/40">
+                            <span className={`text-xs font-bold px-1.5 py-0.5 rounded border ${
+                              savedBytes >= 0
+                                ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800/40'
+                                : 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800/40'
+                            }`}>
                               {savingDisplay}
                             </span>
                           </>
