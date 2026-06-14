@@ -1,0 +1,21 @@
+{
+    "short_name": "LSS Compresor de Imágenes",
+    "name": "LSS Compresor de Imágenes",
+    "start_url": "/lss-img-compressor.html",
+    "display": "standalone",
+    "scope": "/lss-img-compressor.html",
+    "background_color": "#000000",
+    "description": "Herramienta gratuita para comprimir, redimensionar y convertir múltiples imágenes a formato JPG en lote de forma local y 100% privada.",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
